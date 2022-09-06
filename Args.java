@@ -39,5 +39,10 @@ public class Args {
             marshalers.put(elementId, new StringArrayArgumentMarshaler());
         else
             throw new ArgsException(INVALID_ARGUMENT_FORMAT, elementId, elementTail);
-
     }
+
+    private void validateSchemaElementId(char elementId) throws ArgsException {
+        if (!Character.isLetter(elementId))
+            throw new ArgsException(INVALID_ARGUMENT_NAME, elmenetId, null);
+    }
+}
