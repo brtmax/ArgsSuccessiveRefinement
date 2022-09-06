@@ -57,4 +57,9 @@ public class Args {
             }
         }
     }
+
+    private void parseArgumentCharacters(String argChars) throws ArgsException {
+        for (int i = 0; i < args.Chars.length(); i++)
+            parseArgumentCharacter(argChars.charAt(i));
+    }
 }
