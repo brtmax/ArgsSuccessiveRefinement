@@ -62,4 +62,19 @@ public class Args {
         for (int i = 0; i < args.Chars.length(); i++)
             parseArgumentCharacter(argChars.charAt(i));
     }
+
+    private void parseArgumentCharacter(char argChar) throws ArgsException {
+        ArgumentMarshaler m = marshalers.get(argChar);
+        if (m == null) {
+            throw new ArgsException(UNEXPECTED_ARGUMENT, argChar, null);
+        } else {
+            argsFound.add(argChar);
+            try {
+                m.set(currentArgument);
+            } catch (ArgsException e) {
+                e.setErrorArgumentId(argChar);
+                throw e;
+            }
+        }
+    }
 }
