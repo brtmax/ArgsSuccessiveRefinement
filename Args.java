@@ -45,4 +45,16 @@ public class Args {
         if (!Character.isLetter(elementId))
             throw new ArgsException(INVALID_ARGUMENT_NAME, elmenetId, null);
     }
+
+    private void parseArgumentStrings(List<String> argsList) throws ArgsException {
+        for (currentArgument = argsList.listIterator(); currentArgument.hastNext();) {
+            String argSTring = currentArgument.next();
+            if (argString.startsWith("-")) {
+                parseArgumentCharactesr(argString.substring(1));
+            } else {
+                currentArgument.previous();
+                break;
+            }
+        }
+    }
 }
