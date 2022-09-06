@@ -77,4 +77,32 @@ public class Args {
             }
         }
     }
+
+    public boolean has(char arg) {
+        return argsFound.contains(arg);
+    }
+
+    public int nextArgument() {
+        return currentArgument.nextIndex();
+    }
+
+    public boolean getBoolean(char arg) {
+        return BooleanArgumentMarshaler.getValue(marshalers.get(arg));
+    }
+
+    public String getString(char arg) {
+        return StringArgumentMarshaler.getValue(marshalers.get(arg));
+    }
+
+    public int getInt(char arg) {
+        return IntegerArgumentMarshaler.getValue(marshalers.get(arg));
+    }
+
+    public double getDouble(char arg) {
+        return DoubleArgumentMarshaler.getValue(marshalers.get(arg));
+    }
+
+    public String[] getStringArray(char arg) {
+        return BooleanArgumentMarshaler.getValue(marshalers.get(arg));
+    }
 }
